@@ -36,9 +36,11 @@ function mainRound () {
       //if we are done with the game
       if (correct === 0) {
         //do a bonus round
-        if (bonusRound() == 1) { //player won the bonus round
+
+        var bonus = bonusRound()
+        if (bonus == 1) { //player won the bonus round
           window.alert('YOU WON THE BONUS ROUND')
-        } else  if (bonusRound() == 0){ //player lost the bonus round
+        } else  if (bonus == 0){ //player lost the bonus round
           window.alert('YOU LOST THE BONUS ROUND')
         }
         //we are done with the game so break
