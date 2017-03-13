@@ -16,16 +16,16 @@ function mainRound () {
       //lower case
       } else if (input.toLowerCase().trim() === 'lower') {
         if (newNumber < number) {
-          correct -= 1
-          window.alert('You are Correct! (' + (correct) + ' more correct to win)')
+          correct--
+          window.alert('You are Correct! (' + correct + ' more correct to win)')
         } else {
           window.alert('You are Wrong!')
         }
       //higher case
       } else if (input.toLowerCase().trim() === 'higher') {
         if (newNumber > number) {
-          correct -= 1
-          window.alert('You are Correct! (' + (correct) + ' more correct to win)')
+          correct--
+          window.alert('You are Correct! (' + correct + ' more correct to win)')
         } else {
           window.alert('You are Wrong!')
         }
@@ -36,9 +36,9 @@ function mainRound () {
       //if we are done with the game
       if (correct === 0) {
         //do a bonus round
-        if (bonusRound()) { //player won the bonus round
+        if (bonusRound() == 1) { //player won the bonus round
           window.alert('YOU WON THE BONUS ROUND')
-        } else { //player lost the bonus round
+        } else  if (bonusRound() == 0){ //player lost the bonus round
           window.alert('YOU LOST THE BONUS ROUND')
         }
         //we are done with the game so break
@@ -74,13 +74,13 @@ function bonusRound () {
       } else {
         //they get the correct number
         if (parseInt(input) === oneNumber) {
-          return true
+          return 1
         //the picked a number outside the range
         } else if (parseInt(input) > 10 || parseInt(input) < 0) {
           window.alert('The number has to be between 0 and 10')
         //they picked the wrong number
         } else {
-          return false
+          return 0
         }
       }
     }
@@ -88,6 +88,7 @@ function bonusRound () {
   //they did not want to play the game
   } else {
     window.alert('No Bonus Round!')
+    return -1
   }
 }
 
